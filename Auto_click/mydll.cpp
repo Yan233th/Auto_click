@@ -11,8 +11,7 @@
 bool CheckNum (char text[])
 {
     if (text[0] == '.') return false;
-    int length = strlen (text);
-    int pointSum = 0;
+    int length = strlen (text), pointSum = 0;
     for (int i = 0; i < length; i++)
     {
         if (text[i] >= '0' && text[i] <= '9') continue;
