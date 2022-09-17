@@ -26,9 +26,9 @@ namespace Auto_click_GUI
             InitializeComponent();
         }
         [DllImport("Auto_click.dll")]
-        static extern bool CheckNum(string text);
+        static extern bool CheckNum (string text);
         [DllImport("Auto_click.dll")]
-        static extern bool Click(double keep, double gap, double stay);
+        static extern bool Click_Time (double keep, double gap, double stay, int mode);
         private void Run_Click(object sender, RoutedEventArgs e)
         {
             if (keep_data.Text == "" || gap_data.Text == "" || stay_data.Text == "")
@@ -36,13 +36,13 @@ namespace Auto_click_GUI
                 MessageBox.Show ("输入不能为空!");
                 return;
             }
-            if (CheckNum (keep_data.Text) == false || CheckNum(gap_data.Text) == false || CheckNum(stay_data.Text) == false)
+            if (CheckNum (keep_data.Text) == false || CheckNum (gap_data.Text) == false || CheckNum (stay_data.Text) == false)
             {
                 MessageBox.Show ("数字不合法!");
                 return;
             }
             double keep = double.Parse(keep_data.Text), gap = double.Parse(gap_data.Text), stay = double.Parse(stay_data.Text);
-            Click(keep, gap, stay);
+            Click_Time (keep, gap, stay, 1);
         }
     }
 }

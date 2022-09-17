@@ -7,4 +7,4 @@
 #endif
 
 extern "C" API_SYMBOL bool CheckNum (char text[]);
-extern "C" API_SYMBOL bool Click (double keep, double gap, double stay);
+extern "C" API_SYMBOL bool Click_Time (double keep, double gap, double stay, int mode);
