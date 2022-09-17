@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Auto_click", "Auto_click\Auto_click.vcxproj", "{9CCA7B06-C026-41FF-AC59-6373F6C50D11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto_click_GUI", "Auto_click_GUI\Auto_click_GUI.csproj", "{69D72E31-D233-4A55-BB91-1CE3AB6FF158}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auto_click_GUI", "Auto_click_GUI\Auto_click_GUI.csproj", "{69D72E31-D233-4A55-BB91-1CE3AB6FF158}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,8 +19,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9CCA7B06-C026-41FF-AC59-6373F6C50D11}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{9CCA7B06-C026-41FF-AC59-6373F6C50D11}.Debug|Any CPU.Build.0 = Debug|x64
-		{9CCA7B06-C026-41FF-AC59-6373F6C50D11}.Debug|x64.ActiveCfg = Debug|x64
-		{9CCA7B06-C026-41FF-AC59-6373F6C50D11}.Debug|x64.Build.0 = Debug|x64
+		{9CCA7B06-C026-41FF-AC59-6373F6C50D11}.Debug|x64.ActiveCfg = Release|x64
+		{9CCA7B06-C026-41FF-AC59-6373F6C50D11}.Debug|x64.Build.0 = Release|x64
 		{9CCA7B06-C026-41FF-AC59-6373F6C50D11}.Debug|x86.ActiveCfg = Debug|Win32
 		{9CCA7B06-C026-41FF-AC59-6373F6C50D11}.Debug|x86.Build.0 = Debug|Win32
 		{9CCA7B06-C026-41FF-AC59-6373F6C50D11}.Release|Any CPU.ActiveCfg = Release|x64
@@ -31,8 +31,8 @@ Global
 		{9CCA7B06-C026-41FF-AC59-6373F6C50D11}.Release|x86.Build.0 = Release|Win32
 		{69D72E31-D233-4A55-BB91-1CE3AB6FF158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{69D72E31-D233-4A55-BB91-1CE3AB6FF158}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{69D72E31-D233-4A55-BB91-1CE3AB6FF158}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{69D72E31-D233-4A55-BB91-1CE3AB6FF158}.Debug|x64.Build.0 = Debug|Any CPU
+		{69D72E31-D233-4A55-BB91-1CE3AB6FF158}.Debug|x64.ActiveCfg = Release|Any CPU
+		{69D72E31-D233-4A55-BB91-1CE3AB6FF158}.Debug|x64.Build.0 = Release|Any CPU
 		{69D72E31-D233-4A55-BB91-1CE3AB6FF158}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{69D72E31-D233-4A55-BB91-1CE3AB6FF158}.Debug|x86.Build.0 = Debug|Any CPU
 		{69D72E31-D233-4A55-BB91-1CE3AB6FF158}.Release|Any CPU.ActiveCfg = Release|Any CPU
