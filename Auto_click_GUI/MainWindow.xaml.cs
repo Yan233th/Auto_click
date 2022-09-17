@@ -41,10 +41,8 @@ namespace Auto_click_GUI
                 MessageBox.Show ("数字不合法!");
                 return;
             }
-            Run.IsEnabled = false;
             double keep = double.Parse(keep_data.Text), gap = double.Parse(gap_data.Text), stay = double.Parse(stay_data.Text);
             Click(keep, gap, stay);
-            Run.IsEnabled = true;
         }
     }
 }
