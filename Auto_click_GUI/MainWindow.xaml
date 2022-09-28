@@ -14,5 +14,9 @@
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="点击持续时间(s)" VerticalAlignment="Top" FontSize="16" Margin="0,30,150,0"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="点击间隔时间(s)" VerticalAlignment="Top" FontSize="16" Margin="0,70,150,0"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="启动等待时间(s)" VerticalAlignment="Top" FontSize="16" Margin="0,110,150,0"/>
+        <Grid Margin="68,151,262,25">
+            <RadioButton x:Name="left_button" Content="Left" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <RadioButton x:Name="right_button" Content="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0"/>
+        </Grid>
     </Grid>
 </Window>

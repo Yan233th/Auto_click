@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -41,8 +42,11 @@ namespace Auto_click_GUI
                 MessageBox.Show ("数字不合法!");
                 return;
             }
+            int mode = 1;
             double keep = double.Parse(keep_data.Text), gap = double.Parse(gap_data.Text), stay = double.Parse(stay_data.Text);
-            Click_Time (keep, gap, stay, 1);
+            //Thread.Sleep ((int) (stay * 1000));
+            if (right_button.IsChecked == true) mode = 2;
+            Click_Time (keep, gap, stay, mode);
         }
     }
 }
