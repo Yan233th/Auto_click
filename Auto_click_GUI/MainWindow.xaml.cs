@@ -22,31 +22,44 @@ namespace Auto_click_GUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow ()
         {
-            InitializeComponent();
+            InitializeComponent ();
         }
-        [DllImport("Auto_click.dll")]
-        static extern bool CheckNum (string text);
-        [DllImport("Auto_click.dll")]
-        static extern bool Click_Time (double keep, double gap, double stay, int mode);
-        private void Run_Click(object sender, RoutedEventArgs e)
+        [DllImport ("Auto_click.dll")]
+        static extern bool CheckNum (string text, int mode);
+        [DllImport ("Auto_click.dll")]
+        static extern bool Click_Time (double time, double gap, double stay, int mode);
+        [DllImport ("Auto_click.dll")]
+        static extern bool Click_Times (int times, double gap, double stay, int mode);
+        private void Run_Click (object sender, RoutedEventArgs e)
         {
-            if (keep_data.Text == "" || gap_data.Text == "" || stay_data.Text == "")
+            if (gap_data.Text == "" || stay_data.Text == "" || times_mode.IsChecked == true && times_data.Text == "" || time_mode.IsChecked == true && time_data.Text == "")
             {
                 MessageBox.Show ("输入不能为空!");
                 return;
             }
-            if (CheckNum (keep_data.Text) == false || CheckNum (gap_data.Text) == false || CheckNum (stay_data.Text) == false)
+            if (CheckNum (gap_data.Text, 2) == false || CheckNum (stay_data.Text, 2) == false || times_mode.IsChecked == true && CheckNum (times_data.Text, 1) == false || time_mode.IsChecked == true && CheckNum (time_data.Text, 2) == false)
             {
                 MessageBox.Show ("数字不合法!");
                 return;
             }
             int mode = 1;
-            double keep = double.Parse(keep_data.Text), gap = double.Parse(gap_data.Text), stay = double.Parse(stay_data.Text);
-            //Thread.Sleep ((int) (stay * 1000));
             if (right_button.IsChecked == true) mode = 2;
-            Click_Time (keep, gap, stay, mode);
+            if (times_mode.IsChecked == true) Click_Times (int.Parse (times_data.Text), double.Parse (gap_data.Text), double.Parse (stay_data.Text), mode);
+            if (time_mode.IsChecked == true) Click_Time (double.Parse (time_data.Text), double.Parse (gap_data.Text), double.Parse (stay_data.Text), mode);
+        }
+
+        private void times_mode_Checked (object sender, RoutedEventArgs e)
+        {
+            times_data.IsEnabled = true;
+            time_data.IsEnabled = false;
+        }
+
+        private void time_mode_Checked (object sender, RoutedEventArgs e)
+        {
+            time_data.IsEnabled = true;
+            times_data.IsEnabled = false;
         }
     }
 }
