@@ -32,8 +32,27 @@ namespace Auto_click_GUI
         static extern bool Click_Time (double time, double gap, double stay, int mode);
         [DllImport ("Auto_click.dll")]
         static extern bool Click_Times (int times, double gap, double stay, int mode);
+        [DllImport ("Auto_click.dll")]
+        static extern bool Hold_Time (double time, double stay, int mode);
         private void Run_Click (object sender, RoutedEventArgs e)
         {
+            int mode = 1;
+            if (right_button.IsChecked == true) mode = 2;
+            if (hold_mode.IsChecked == true)
+            {
+                if (time_data.Text == "" || stay_data.Text == "")
+                {
+                    MessageBox.Show ("输入不能为空!");
+                    return;
+                }
+                if (CheckNum (time_data.Text, 2) == false || CheckNum (stay_data.Text, 2) == false)
+                {
+                    MessageBox.Show ("数字不合法!");
+                    return;
+                }
+                Hold_Time (double.Parse (time_data.Text), double.Parse (stay_data.Text), mode);
+                return;
+            }
             if (gap_data.Text == "" || stay_data.Text == "" || times_mode.IsChecked == true && times_data.Text == "" || time_mode.IsChecked == true && time_data.Text == "")
             {
                 MessageBox.Show ("输入不能为空!");
@@ -44,22 +63,30 @@ namespace Auto_click_GUI
                 MessageBox.Show ("数字不合法!");
                 return;
             }
-            int mode = 1;
-            if (right_button.IsChecked == true) mode = 2;
             if (times_mode.IsChecked == true) Click_Times (int.Parse (times_data.Text), double.Parse (gap_data.Text), double.Parse (stay_data.Text), mode);
             if (time_mode.IsChecked == true) Click_Time (double.Parse (time_data.Text), double.Parse (gap_data.Text), double.Parse (stay_data.Text), mode);
         }
-
         private void times_mode_Checked (object sender, RoutedEventArgs e)
         {
             times_data.IsEnabled = true;
             time_data.IsEnabled = false;
         }
-
         private void time_mode_Checked (object sender, RoutedEventArgs e)
         {
             time_data.IsEnabled = true;
             times_data.IsEnabled = false;
+        }
+        private void hold_mode_Checked (object sender, RoutedEventArgs e)
+        {
+            time_mode.IsChecked = true;
+            times_mode.IsEnabled = false;
+            gap_data.IsEnabled = false;
+        }
+
+        private void hold_mode_Unchecked (object sender, RoutedEventArgs e)
+        {
+            times_mode.IsEnabled = true;
+            gap_data.IsEnabled = true;
         }
     }
 }

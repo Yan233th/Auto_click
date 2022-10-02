@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Auto_click" Height="250" Width="400" ResizeMode="CanMinimize">
     <Grid>
-        <Button x:Name="Run" Content="Run" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Click="Run_Click" Margin="0,155,0,0" Width="50" Height="30" IsDefault="True"/>
+        <Button x:Name="Run" Content="运行" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Click="Run_Click" Margin="0,155,0,0" Width="75" Height="30" IsDefault="True"/>
         <TextBox x:Name="times_data" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="16" Margin="225,20,0,0" IsEnabled="False"/>
         <TextBox x:Name="time_data" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="16" Margin="225,50,0,0" IsEnabled="False"/>
         <TextBox x:Name="gap_data" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="16" Margin="225,80,0,0"/>
@@ -20,5 +20,6 @@
         <RadioButton GroupName="click_mode" x:Name="time_mode" Content="时间" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,55,0,0" Checked="time_mode_Checked"/>
         <RadioButton GroupName="left/right" x:Name="left_button" Content="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,85,0,0"/>
         <RadioButton GroupName="left/right" x:Name="right_button" Content="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,115,0,0"/>
+        <CheckBox x:Name="hold_mode" Content="长按模式" HorizontalAlignment="Left" Margin="50,162,0,0" VerticalAlignment="Top" Checked="hold_mode_Checked" Unchecked="hold_mode_Unchecked"/>
     </Grid>
 </Window>

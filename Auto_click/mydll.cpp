@@ -7,7 +7,7 @@
 #include <windows.h>
 #include <ctime>
 
-#define t_1s 1000
+#define t_1s 995
 
 bool CheckNum (char text[], int mode)
 {
@@ -22,7 +22,7 @@ bool CheckNum (char text[], int mode)
                 if (text[i] >= '0' && text[i] <= '9') continue;
                 return false;
             }
-            return true;
+            break;
         }
         case 2:
         {
@@ -39,17 +39,17 @@ bool CheckNum (char text[], int mode)
                 return false;
             }
             if (pointSum > 1) return false;
-            return true;
+            break;
         }
     }
-    return false;
+    return true;
 }
 
-bool Click_Time (double keep, double gap, double stay, int mode)
+bool Click_Time (double time_, double gap, double stay, int mode)
 {
     Sleep (stay * t_1s);
     if (gap < 0.01) gap = 0.01;
-    double limit = time (NULL) + keep;
+    double limit = time (NULL) + time_;
     switch (mode)
     {
         case 1:
@@ -61,6 +61,7 @@ bool Click_Time (double keep, double gap, double stay, int mode)
                 mouse_event (MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
                 Sleep (gap * t_1s);
             }
+            break;
         }
         case 2:
         {
@@ -71,6 +72,7 @@ bool Click_Time (double keep, double gap, double stay, int mode)
                 mouse_event (MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
                 Sleep (gap * t_1s);
             }
+            break;
         }
     }
     return true;
@@ -82,26 +84,52 @@ bool Click_Times (int times, double gap, double stay, int mode)
     if (gap < 0.01) gap = 0.01;
     switch (mode)
     {
-    case 1:
+        case 1:
+        {
+            while (times-- > 0)
+            {
+                mouse_event (MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+                Sleep (10);
+                mouse_event (MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+                Sleep (gap * t_1s);
+            }
+            break;
+        }
+        case 2:
+        {
+            while (times-- > 0)
+            {
+                mouse_event (MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+                Sleep (10);
+                mouse_event (MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+                Sleep (gap * t_1s);
+            }
+            break;
+        }
+    }
+    return true;
+}
+
+bool Hold_Time (double time_, double stay, int mode)
+{
+    Sleep (stay * t_1s);
+    if (time_ < 0.01) time_ = 0.01;
+    switch (mode)
     {
-        while (times-- > 0)
+        case 1:
         {
             mouse_event (MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-            Sleep (10);
+            Sleep (time_ * t_1s);
             mouse_event (MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-            Sleep (gap * t_1s);
+            break;
         }
-    }
-    case 2:
-    {
-        while (times-- > 0)
+        case 2:
         {
             mouse_event (MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
-            Sleep (10);
+            Sleep (time_ * t_1s);
             mouse_event (MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
-            Sleep (gap * t_1s);
+            break;
         }
-    }
     }
     return true;
 }
