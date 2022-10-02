@@ -36,6 +36,8 @@ namespace Auto_click_GUI
         static extern bool Hold_Time (double time, double stay, int mode);
         private void Run_Click (object sender, RoutedEventArgs e)
         {
+            //Run.IsEnabled = false;
+            //Run.Content = "运行中...";
             int mode = 1;
             if (right_button.IsChecked == true) mode = 2;
             if (hold_mode.IsChecked == true)
@@ -51,20 +53,24 @@ namespace Auto_click_GUI
                     return;
                 }
                 Hold_Time (double.Parse (time_data.Text), double.Parse (stay_data.Text), mode);
-                return;
             }
-            if (gap_data.Text == "" || stay_data.Text == "" || times_mode.IsChecked == true && times_data.Text == "" || time_mode.IsChecked == true && time_data.Text == "")
+            else
             {
-                MessageBox.Show ("输入不能为空!");
-                return;
+                if (gap_data.Text == "" || stay_data.Text == "" || times_mode.IsChecked == true && times_data.Text == "" || time_mode.IsChecked == true && time_data.Text == "")
+                {
+                    MessageBox.Show ("输入不能为空!");
+                    return;
+                }
+                if (CheckNum (gap_data.Text, 2) == false || CheckNum (stay_data.Text, 2) == false || times_mode.IsChecked == true && CheckNum (times_data.Text, 1) == false || time_mode.IsChecked == true && CheckNum (time_data.Text, 2) == false)
+                {
+                    MessageBox.Show ("数字不合法!");
+                    return;
+                }
+                if (times_mode.IsChecked == true) Click_Times (int.Parse (times_data.Text), double.Parse (gap_data.Text), double.Parse (stay_data.Text), mode);
+                if (time_mode.IsChecked == true) Click_Time (double.Parse (time_data.Text), double.Parse (gap_data.Text), double.Parse (stay_data.Text), mode);
             }
-            if (CheckNum (gap_data.Text, 2) == false || CheckNum (stay_data.Text, 2) == false || times_mode.IsChecked == true && CheckNum (times_data.Text, 1) == false || time_mode.IsChecked == true && CheckNum (time_data.Text, 2) == false)
-            {
-                MessageBox.Show ("数字不合法!");
-                return;
-            }
-            if (times_mode.IsChecked == true) Click_Times (int.Parse (times_data.Text), double.Parse (gap_data.Text), double.Parse (stay_data.Text), mode);
-            if (time_mode.IsChecked == true) Click_Time (double.Parse (time_data.Text), double.Parse (gap_data.Text), double.Parse (stay_data.Text), mode);
+            //Run.Content = "运行";
+            //Run.IsEnabled = true;
         }
         private void times_mode_Checked (object sender, RoutedEventArgs e)
         {
