@@ -44,6 +44,7 @@ namespace Auto_click_GUI
             }
             int mode = 1;
             double keep = double.Parse(keep_data.Text), gap = double.Parse(gap_data.Text), stay = double.Parse(stay_data.Text);
+            //Thread.Sleep ((int) (stay * 1000));
             if (right_button.IsChecked == true) mode = 2;
             Click_Time (keep, gap, stay, mode);
         }
