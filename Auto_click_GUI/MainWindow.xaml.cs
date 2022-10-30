@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Auto_click_GUI
+namespace Auto_click_GUI.NET
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

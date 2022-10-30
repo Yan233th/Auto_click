@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Auto_click_GUI
+namespace Auto_click_GUI.NET
 {
     /// <summary>
     /// Interaction logic for App.xaml

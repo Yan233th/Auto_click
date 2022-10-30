@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Auto_click", "Auto_click\Auto_click.vcxproj", "{9CCA7B06-C026-41FF-AC59-6373F6C50D11}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auto_click_GUI", "Auto_click_GUI\Auto_click_GUI.csproj", "{69D72E31-D233-4A55-BB91-1CE3AB6FF158}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auto_click_GUI.NET", "Auto_click_GUI\Auto_click_GUI.NET.csproj", "{69D72E31-D233-4A55-BB91-1CE3AB6FF158}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto_click_GUI.NET_Framework", "Auto_click_GUI.NET_Framework\Auto_click_GUI.NET_Framework.csproj", "{281ACBC2-9BC5-4A45-B11B-F47967989861}"
 EndProject
