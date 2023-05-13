@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Auto_click_GUI.NET"
         mc:Ignorable="d"
-        Title="Auto_click" Height="250" Width="400" ResizeMode="CanMinimize">
+        Title="Auto_click" Height="250" Width="400" ResizeMode="CanMinimize" Topmost="True">
     <Grid>
         <Button x:Name="Run" Content="运行" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Click="Run_Click" Margin="0,155,0,0" Width="75" Height="30" IsDefault="True"/>
         <TextBox x:Name="times_data" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="16" Margin="225,20,0,0" IsEnabled="False"/>
