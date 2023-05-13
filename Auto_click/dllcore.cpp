@@ -45,7 +45,7 @@ bool CheckNum (char text[], int mode)
     return true;
 }
 
-bool Click_Time (double time_, double gap, double stay, int mode)
+bool Click_Time (double time_, double gap, double stay, int mode, void (*CallBack) (int status))
 {
     Sleep (stay * t_1s);
     if (gap < 0.01) gap = 0.01;
@@ -75,10 +75,11 @@ bool Click_Time (double time_, double gap, double stay, int mode)
             break;
         }
     }
+    CallBack (0);
     return true;
 }
 
-bool Click_Times (int times, double gap, double stay, int mode)
+bool Click_Times (int times, double gap, double stay, int mode, void (*CallBack) (int status))
 {
     Sleep (stay * t_1s);
     if (gap < 0.01) gap = 0.01;
@@ -107,10 +108,11 @@ bool Click_Times (int times, double gap, double stay, int mode)
             break;
         }
     }
+    CallBack (0);
     return true;
 }
 
-bool Hold_Time (double time_, double stay, int mode)
+bool Hold_Time (double time_, double stay, int mode, void (*CallBack) (int status))
 {
     Sleep (stay * t_1s);
     if (time_ < 0.01) time_ = 0.01;
@@ -131,5 +133,6 @@ bool Hold_Time (double time_, double stay, int mode)
             break;
         }
     }
+    CallBack (0);
     return true;
 }

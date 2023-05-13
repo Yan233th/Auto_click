@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Auto_click_GUI.NET
 {
@@ -27,49 +28,77 @@ namespace Auto_click_GUI.NET
             InitializeComponent ();
         }
 
+        private delegate void DllCallBack (int status);
+
         [DllImport ("Auto_click.dll")]
         static extern bool CheckNum (string text, int mode);
         [DllImport ("Auto_click.dll")]
-        static extern bool Click_Time (double time, double gap, double stay, int mode);
+        static extern bool Click_Time (double time, double gap, double stay, int mode, DllCallBack CallBack);
         [DllImport ("Auto_click.dll")]
-        static extern bool Click_Times (int times, double gap, double stay, int mode);
+        static extern bool Click_Times (int times, double gap, double stay, int mode, DllCallBack CallBack);
         [DllImport ("Auto_click.dll")]
-        static extern bool Hold_Time (double time, double stay, int mode);
+        static extern bool Hold_Time (double time, double stay, int mode, DllCallBack CallBack);
+
+        private void ExecutionCallBack (int status)
+        {
+            if (status != 0) MessageBox.Show ("出错了...");
+            Run.Dispatcher.Invoke (new Action (delegate {Run.IsEnabled = true;}));
+        }
 
         private void Run_Click (object sender, RoutedEventArgs e)
         {
-            //Run.IsEnabled = false;
-            //Run.Content = "运行中...";
+            Run.IsEnabled = false;
             int mode = 1;
             if (right_button.IsChecked == true) mode = 2;
+            string times_data_Text = times_data.Text;
+            string time_data_Text = time_data.Text;
+            string gap_data_Text = gap_data.Text;
+            string stay_data_Text = stay_data.Text;
             if (hold_mode.IsChecked == true)
             {
-                if (time_data.Text == "" || stay_data.Text == "")
+                if (time_data_Text == "" || stay_data_Text == "")
                 {
                     MessageBox.Show ("输入不能为空!");
                     return;
                 }
-                if (CheckNum (time_data.Text, 2) == false || CheckNum (stay_data.Text, 2) == false)
+                if (CheckNum (time_data_Text, 2) == false || CheckNum (stay_data_Text, 2) == false)
                 {
                     MessageBox.Show ("数字不合法!");
                     return;
                 }
-                Hold_Time (double.Parse (time_data.Text), double.Parse (stay_data.Text), mode);
+                double time = double.Parse (time_data_Text);
+                double stay = double.Parse (stay_data_Text);
+                Thread execute = new Thread (() => Hold_Time (time, stay, mode, ExecutionCallBack));
+                execute.Start ();
             }
             else
             {
-                if (gap_data.Text == "" || stay_data.Text == "" || times_mode.IsChecked == true && times_data.Text == "" || time_mode.IsChecked == true && time_data.Text == "")
+                if (gap_data_Text == "" || stay_data_Text == "" || times_mode.IsChecked == true && times_data_Text == "" || time_mode.IsChecked == true && time_data_Text == "")
                 {
                     MessageBox.Show ("输入不能为空!");
                     return;
                 }
-                if (CheckNum (gap_data.Text, 2) == false || CheckNum (stay_data.Text, 2) == false || times_mode.IsChecked == true && CheckNum (times_data.Text, 1) == false || time_mode.IsChecked == true && CheckNum (time_data.Text, 2) == false)
+                if (CheckNum (gap_data_Text, 2) == false || CheckNum (stay_data_Text, 2) == false || times_mode.IsChecked == true && CheckNum (times_data_Text, 1) == false || time_mode.IsChecked == true && CheckNum (time_data_Text, 2) == false)
                 {
                     MessageBox.Show ("数字不合法!");
                     return;
                 }
-                if (times_mode.IsChecked == true) Click_Times (int.Parse (times_data.Text), double.Parse (gap_data.Text), double.Parse (stay_data.Text), mode);
-                if (time_mode.IsChecked == true) Click_Time (double.Parse (time_data.Text), double.Parse (gap_data.Text), double.Parse (stay_data.Text), mode);
+                if (times_mode.IsChecked == true)
+                {
+                    int times = int.Parse (times_data_Text);
+                    double gap = double.Parse (gap_data_Text);
+                    double stay = double.Parse (stay_data_Text);
+                    Thread execute = new Thread (() => Click_Times (times, gap, stay, mode, ExecutionCallBack));
+                    execute.Start ();
+                }
+                if (time_mode.IsChecked == true)
+                {
+                    double time = double.Parse (time_data_Text);
+                    double gap = double.Parse (gap_data_Text);
+                    double stay = double.Parse (stay_data_Text);
+                    Thread execute = new Thread (() => Click_Time (time, gap, stay, mode, ExecutionCallBack));
+                    execute.Start ();
+                }
             }
         }
 
