@@ -26,6 +26,7 @@ namespace Auto_click_GUI.NET
         {
             InitializeComponent ();
         }
+
         [DllImport ("Auto_click.dll")]
         static extern bool CheckNum (string text, int mode);
         [DllImport ("Auto_click.dll")]
@@ -34,6 +35,7 @@ namespace Auto_click_GUI.NET
         static extern bool Click_Times (int times, double gap, double stay, int mode);
         [DllImport ("Auto_click.dll")]
         static extern bool Hold_Time (double time, double stay, int mode);
+
         private void Run_Click (object sender, RoutedEventArgs e)
         {
             //Run.IsEnabled = false;
@@ -69,19 +71,20 @@ namespace Auto_click_GUI.NET
                 if (times_mode.IsChecked == true) Click_Times (int.Parse (times_data.Text), double.Parse (gap_data.Text), double.Parse (stay_data.Text), mode);
                 if (time_mode.IsChecked == true) Click_Time (double.Parse (time_data.Text), double.Parse (gap_data.Text), double.Parse (stay_data.Text), mode);
             }
-            //Run.Content = "运行";
-            //Run.IsEnabled = true;
         }
+
         private void times_mode_Checked (object sender, RoutedEventArgs e)
         {
             times_data.IsEnabled = true;
             time_data.IsEnabled = false;
         }
+
         private void time_mode_Checked (object sender, RoutedEventArgs e)
         {
             time_data.IsEnabled = true;
             times_data.IsEnabled = false;
         }
+
         private void hold_mode_Checked (object sender, RoutedEventArgs e)
         {
             time_mode.IsChecked = true;
