@@ -21,7 +21,7 @@
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="mydll.h">
+    <ClInclude Include="dllcore.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,7 +32,7 @@
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="mydll.cpp">
+    <ClCompile Include="dllcore.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

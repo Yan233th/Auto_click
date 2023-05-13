@@ -1,7 +1,7 @@
 #define BUILD_MYDLL
 
 #include "pch.h"
-#include "mydll.h"
+#include "dllcore.h"
 
 #include <iostream>
 #include <windows.h>
