@@ -18,7 +18,7 @@
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="启动等待时间(s)" VerticalAlignment="Top" FontSize="16" Margin="85,110,10,0"/>
         <RadioButton GroupName="click_mode" x:Name="times_mode" Content="次数" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,25,0,0" Checked="times_mode_Checked"/>
         <RadioButton GroupName="click_mode" x:Name="time_mode" Content="时间" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,55,0,0" Checked="time_mode_Checked"/>
-        <RadioButton GroupName="left/right" x:Name="left_button" Content="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,85,0,0"/>
+        <RadioButton GroupName="left/right" x:Name="left_button" Content="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,85,0,0" IsChecked="True"/>
         <RadioButton GroupName="left/right" x:Name="right_button" Content="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,115,0,0"/>
         <CheckBox x:Name="hold_mode" Content="长按模式" HorizontalAlignment="Left" Margin="50,162,0,0" VerticalAlignment="Top" Checked="hold_mode_Checked" Unchecked="hold_mode_Unchecked"/>
     </Grid>
